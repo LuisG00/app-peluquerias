@@ -1,13 +1,19 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { Icon } from 'react-native-elements'
+
 
 import Busqueda from '../screens/Busqueda'
 import Recomendados from '../screens/Recomendados'
 import Perfil from '../screens/Perfil'
-import Barberias from '../screens/Barberias'
-import Esteticas from '../screens/Esteticas'
-import Favoritos from '../screens/Favoritos'
+
+import BarberiasStack from './BarberiasStack'
+import FavoritosStack from './FavoritosStack'
+import EsteticasStack from './EsteticasStack'
+
+
+
 
 
 const Tab = createBottomTabNavigator()
@@ -15,20 +21,29 @@ const Tab = createBottomTabNavigator()
 export default function Navigation(){
     return(
         <NavigationContainer>
-            <Tab.Navigator>
+            <Tab.Navigator
+                initialRouteName='barberias'
+                tabBarOptions={{
+                    inactiveTintColor: '#9b9b9b',
+                    activeTintColor: '#0833A2'
+                }}
+                screenOptions={({route}) => ({
+                    tabBarIcon:({color}) =>screenOptions(route, color)
+                })}
+            >
                 <Tab.Screen 
                 name='barberias' 
-                component={Barberias}
+                component={BarberiasStack}
                 options={{title:"Barberías"}}
                 />
                 <Tab.Screen 
                 name='esteticas' 
-                component={Esteticas}
+                component={EsteticasStack}
                 options={{title:"Estéticas"}}
                 />
                 <Tab.Screen 
                 name='favoritos' 
-                component={Favoritos}
+                component={FavoritosStack}
                 options={{title:"Favoritos"}}
                 />
                 <Tab.Screen 
@@ -48,5 +63,22 @@ export default function Navigation(){
                 />
             </Tab.Navigator>
         </NavigationContainer>
+    )
+}
+
+function screenOptions(route, color){
+    let iconName
+    switch (route.name) {
+        case 'barberias':
+            iconName='smoking-pipe'
+            break
+        case 'esteticas':
+            iconName='content-cut'
+            break
+        case 'favoritos':
+            iconName='star'
+    }
+    return(
+        <Icon type='material-community' name={iconName} size={22} color={color}/>
     )
 }
