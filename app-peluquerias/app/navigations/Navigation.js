@@ -3,18 +3,12 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Icon } from 'react-native-elements'
 
-
-import Busqueda from '../screens/Busqueda'
-import Recomendados from '../screens/Recomendados'
-import Perfil from '../screens/Perfil'
-
 import BarberiasStack from './BarberiasStack'
 import FavoritosStack from './FavoritosStack'
 import EsteticasStack from './EsteticasStack'
-
-
-
-
+import BusquedaStack from './BusquedaStack'
+import RecomendadosStack from './RecomendadosStack'
+import PerfilStack from './PerfilStack'
 
 const Tab = createBottomTabNavigator()
 
@@ -48,17 +42,17 @@ export default function Navigation(){
                 />
                 <Tab.Screen 
                 name='busqueda' 
-                component={Busqueda}
+                component={BusquedaStack}
                 options={{title:"Busqueda"}}
                 />
                 <Tab.Screen 
                 name='recomendados' 
-                component={Recomendados}
+                component={RecomendadosStack}
                 options={{title:"Recomendados"}}
                 />
                 <Tab.Screen 
                 name='perfil' 
-                component={Perfil}
+                component={PerfilStack}
                 options={{title:"Perfil"}}
                 />
             </Tab.Navigator>
@@ -77,6 +71,15 @@ function screenOptions(route, color){
             break
         case 'favoritos':
             iconName='star'
+            break
+        case 'busqueda':
+            iconName='home-search'
+            break
+        case 'perfil':
+            iconName='card-account-details'
+            break
+        case 'recomendados':
+            iconName='thumb-up'
     }
     return(
         <Icon type='material-community' name={iconName} size={22} color={color}/>
