@@ -14,7 +14,7 @@ export default function Login(){
         
         />
             <View style={styles.viewContainer}>
-                <Text>Bienvenido!</Text>
+                <Text>¡Bienvenido!</Text>
                 <CreateAccount/>
             </View>
             <Divider style={styles.divider}/>
