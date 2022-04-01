@@ -41,7 +41,7 @@ function CreateAccount(){
 const styles = StyleSheet.create({
     logo:{
         width: '100%',
-        height: 300,
+        height: 350,
         marginTop: 5
     },
     viewContainer:{

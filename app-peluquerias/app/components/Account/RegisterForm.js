@@ -43,7 +43,7 @@ export default function RegisterForm(){
             />
             <Input
                 placeholder='Celular'
-                containerStyle={styles.inputForm}
+                containerStyle={styles.inputPhone}
                 onChange={(e)=>onChange(e, 'phone')}
                 rightIcon={<Icon
                      type='material-community' 
@@ -102,6 +102,10 @@ const styles = StyleSheet.create({
         
     },
     inputForm:{
+        width: '100%',
+        marginTop: 20,
+    },
+    inputPhone:{
         width: '100%',
         marginTop: 20,
     },
