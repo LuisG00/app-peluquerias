@@ -15,13 +15,13 @@ export default function RegisterForm(){
         } else if (!validateEmail(formData.email)){
             console.log('Email incorrecto')
         }else if (!validatePhone(formData.phone)){
-            console.log('Telefono Invalido')
+            console.log('Teléfono inválido')
         }else if (formData.password !== formData.repeatpassword){
             console.log('Las contraseñas no coinciden')
         } else if (formData.password.length < 6){
             console.log('El minimo de caracteres de la contraseña deben ser 6')
         } else{
-            console.log('Register Successfully')
+            console.log('Registro exitoso. ¡Bienvenido!')
         }
     }
 

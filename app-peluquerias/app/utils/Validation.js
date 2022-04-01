@@ -4,6 +4,6 @@ export function validateEmail(email){
 }
 
 export function validatePhone(phone){
-    const re = /^\d{7,14}$/
+    const re = /^\d{10}$/
     return re.test(phone)
 }
