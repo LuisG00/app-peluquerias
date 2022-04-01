@@ -9,6 +9,7 @@ import EsteticasStack from './EsteticasStack'
 import BusquedaStack from './BusquedaStack'
 import RecomendadosStack from './RecomendadosStack'
 import PerfilStack from './PerfilStack'
+import NovedadesStack from './NovedadesStack'
 
 const Tab = createBottomTabNavigator()
 
@@ -51,11 +52,17 @@ export default function Navigation(){
                 options={{title:"Recomendados"}}
                 />
                 <Tab.Screen 
+                name='novedades' 
+                component={NovedadesStack}
+                options={{title:"Novedades"}}
+                />
+                <Tab.Screen 
                 name='perfil' 
                 component={PerfilStack}
                 options={{title:"Perfil"}}
                 />
             </Tab.Navigator>
+            
         </NavigationContainer>
     )
 }
@@ -80,6 +87,9 @@ function screenOptions(route, color){
             break
         case 'recomendados':
             iconName='thumb-up'
+            break
+        case 'novedades':
+            iconName='newspaper'
     }
     return(
         <Icon type='material-community' name={iconName} size={22} color={color}/>
