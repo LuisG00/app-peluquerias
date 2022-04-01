@@ -14,7 +14,7 @@ export default function Login(){
         
         />
             <View style={styles.viewContainer}>
-                <Text>Bienvenido!</Text>
+                <Text>¡Bienvenido!</Text>
                 <CreateAccount/>
             </View>
             <Divider style={styles.divider}/>
@@ -41,7 +41,7 @@ function CreateAccount(){
 const styles = StyleSheet.create({
     logo:{
         width: '100%',
-        height: 300,
+        height: 350,
         marginTop: 5
     },
     viewContainer:{

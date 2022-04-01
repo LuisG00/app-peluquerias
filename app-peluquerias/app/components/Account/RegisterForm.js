@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 import {Input, Icon, Button} from 'react-native-elements'
 import { validateEmail } from '../../utils/Validation'
+import { validatePhone } from '../../utils/Validation'
 
 export default function RegisterForm(){
     const [showPassword, setShowPassword] = useState(false)
@@ -13,6 +14,8 @@ export default function RegisterForm(){
             console.log('Se requieren todos los campos')
         } else if (!validateEmail(formData.email)){
             console.log('Email incorrecto')
+        }else if (!validatePhone(formData.phone)){
+            console.log('Telefono Invalido')
         }else if (formData.password !== formData.repeatpassword){
             console.log('Las contraseñas no coinciden')
         } else if (formData.password.length < 6){
@@ -40,7 +43,7 @@ export default function RegisterForm(){
             />
             <Input
                 placeholder='Celular'
-                containerStyle={styles.inputForm}
+                containerStyle={styles.inputPhone}
                 onChange={(e)=>onChange(e, 'phone')}
                 rightIcon={<Icon
                      type='material-community' 
@@ -56,7 +59,7 @@ export default function RegisterForm(){
                 onChange={(e)=>onChange(e, 'password')}
                 rightIcon={<Icon
                      type='material-community' 
-                     name={showPassword ? 'emoticon-excited-outline' : 'emoticon-excited' }
+                     name={showPassword ? 'eye-off' : 'eye' }
                      iconStyle={styles.iconRight}
                      onPress={()=> setShowPassword(!showPassword)}
                      />}
@@ -69,7 +72,7 @@ export default function RegisterForm(){
                 onChange={(e)=>onChange(e, 'repeatpassword')}
                 rightIcon={<Icon
                      type='material-community' 
-                     name={showRepeatPassword ? 'emoticon-excited-outline' : 'emoticon-excited' }
+                     name={showRepeatPassword ? 'eye-off' : 'eye' }
                      iconStyle={styles.iconRight}
                      onPress={()=> setshowRepeatPassword(!showRepeatPassword)}
                      />}
@@ -99,6 +102,10 @@ const styles = StyleSheet.create({
         
     },
     inputForm:{
+        width: '100%',
+        marginTop: 20,
+    },
+    inputPhone:{
         width: '100%',
         marginTop: 20,
     },
