@@ -3,25 +3,73 @@ import { StyleSheet, View, Text } from 'react-native'
 import {Input, Icon, Button} from 'react-native-elements'
 import { validateEmail } from '../../utils/Validation'
 import { validatePhone } from '../../utils/Validation'
+import firebase from 'firebase'
+import { useNavigation} from '@react-navigation/native'
 
-export default function RegisterForm(){
+export default function RegisterForm(props){
+    const {toastRef} = props
     const [showPassword, setShowPassword] = useState(false)
     const [showRepeatPassword, setshowRepeatPassword] = useState(false) 
     const [formData, setFormData] = useState(defaultFormValues())
+    const navigation = useNavigation()
 
     const onSubmit = () =>{
         if(formData.email.length===0||formData.phone.length===0||formData.password.length===0||formData.repeatpassword.length===0){
-            console.log('Se requieren todos los campos')
+            toastRef.current.show({
+                type: 'error',
+                position: 'top',
+                text1: 'Empty',
+                text2: 'Todos los campos son requeridos',
+                visibilityTime: 3000,
+            });
         } else if (!validateEmail(formData.email)){
-            console.log('Email incorrecto')
+            toastRef.current.show({
+                type: 'error',
+                position: 'top',
+                text1: 'Email',
+                text2: 'El email no es correcto',
+                visibilityTime: 3000,
+            });
         }else if (!validatePhone(formData.phone)){
-            console.log('Teléfono inválido')
+            toastRef.current.show({
+                type: 'error',
+                position: 'top',
+                text1: 'Phone',
+                text2: 'Teléfono inválido',
+                visibilityTime: 3000,
+            });
         }else if (formData.password !== formData.repeatpassword){
-            console.log('Las contraseñas no coinciden')
+            toastRef.current.show({
+                type: 'error',
+                position: 'top',
+                text1: 'Password',
+                text2: 'Las contraseñas deben ser idénticas',
+                visibilityTime: 3000,
+            });
         } else if (formData.password.length < 6){
-            console.log('El minimo de caracteres de la contraseña deben ser 6')
+            toastRef.current.show({
+                type: 'error',
+                position: 'top',
+                text1: 'Password',
+                text2: 'La longitud mínima de la contraseña es de 6 caracteres ',
+                visibilityTime: 3000,
+            });
         } else{
-            console.log('Registro exitoso. ¡Bienvenido!')
+            firebase
+            .auth()
+            .createUserWithEmailAndPassword(formData.email, formData.password)
+            .then((response)=>{
+                navigation.navigate('account')
+            })
+            .catch(()=>{
+                toastRef.current.show({
+                    type: 'error',
+                    position: 'top',
+                    text1: 'Password',
+                    text2: 'Este correo ya ha sido registrado ',
+                    visibilityTime: 3000,
+                });
+            })
         }
     }
 
