@@ -59,7 +59,7 @@ export default function RegisterForm(props){
             .auth()
             .createUserWithEmailAndPassword(formData.email, formData.password)
             .then((response)=>{
-                navigation.navigate('account')
+                navigation.navigate('perfil')
             })
             .catch(()=>{
                 toastRef.current.show({
