@@ -74,17 +74,17 @@ export default function AccountOptions(props){
 function generateOptions(selectedComponent){
     return[
         {
-            title: 'Cambiar nombre y apellidos',
+            title: 'Modificar nombre y apellidos',
             iconNameLeft: 'account-circle',
             onPress: () => selectedComponent('displayName')
         },
         {
-            title: 'Cambiar email',
+            title: 'Modificar email',
             iconNameLeft: 'drafts',
             onPress: () => selectedComponent('displayEmail')
         },
         {
-            title: 'Cambiar password',
+            title: 'Modificar password',
             iconNameLeft: 'lock',
             onPress: () => selectedComponent('displayPassword')
         }

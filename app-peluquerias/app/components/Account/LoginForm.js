@@ -102,12 +102,13 @@ const styles = StyleSheet.create({
     marginBottom: 15
   },
   btnContainerLogin:{
-    marginTop: 20,
-    marginBottom: 10,
+    marginTop: 5,
+    marginBottom: 5,
+    borderRadius: 10,
     width: '95%'
   },
   btnLogin:{
-    backgroundColor:'#00a680'
+    backgroundColor:'#0833A2'
   },
   iconRight:{
     color: '#c1c1c1'

@@ -46,8 +46,8 @@ function CreateAccount(){
 const styles = StyleSheet.create({
     logo:{
         width: '100%',
-        height: 350,
-        marginTop: 5
+        height: 250,
+        marginTop: 5,
     },
     viewContainer:{
         marginRight:40,
@@ -60,7 +60,8 @@ const styles = StyleSheet.create({
     textRegister:{
         marginTop: 15,
         marginLeft: 10,
-        marginRight: 10
+        marginRight: 10,
+        textAlign: 'center'
     },
     linkRegister:{
         color: '#0833A2',

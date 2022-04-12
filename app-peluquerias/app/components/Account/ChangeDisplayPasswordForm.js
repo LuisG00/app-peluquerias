@@ -63,7 +63,7 @@ const onChangePasswordPress = () =>{
         <KeyboardAwareScrollView>
         <View style={styles.view}>
             <Input      
-                placeholder="Contraseña Actual"
+                placeholder="Contraseña actual"
                 containerStyle={styles.input}                
                 password={true}
                 secureTextEntry={showCPassword ? false : true}
@@ -91,7 +91,7 @@ const onChangePasswordPress = () =>{
                 onChange={(e)=>setNewDisplayPassword(e.nativeEvent.text)}
             />
             <Input
-                placeholder="Confirme la constraseña"
+                placeholder="Confirme la nueva contraseña"
                 containerStyle={styles.input}
                 password={true}
                 secureTextEntry={showRepeatPassword ? false : true}
@@ -130,7 +130,8 @@ const styles = StyleSheet.create({
         width: '95%'
     },
     btn:{
-        backgroundColor: '#00a680'
+        backgroundColor: '#0833A2',
+        borderRadius: 10
     },
     iconRight:{
         color: '#c2c2c2'

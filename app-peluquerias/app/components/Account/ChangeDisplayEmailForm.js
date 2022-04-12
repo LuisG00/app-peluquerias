@@ -106,7 +106,8 @@ const styles = StyleSheet.create({
         width: '95%'
     },
     btn:{
-        backgroundColor: '#00a680'
+        backgroundColor: '#0833A2',
+        borderRadius: 10
     },
     iconRight:{
         color: '#c2c2c2'
