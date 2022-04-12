@@ -37,9 +37,8 @@ export default function Miembro(){
 const styles = StyleSheet.create({
     btnCloseSession:{
         marginTop: 30,
-        borderRadius: 0,
-        backgroundColor: '#00a680',
-        borderTopWidth: 1,
+        borderRadius: 10,
+        backgroundColor: '#0833A2',
         borderTopColor: '#e3e3e3',
         borderBottomWidth: 1,
         borderBottomColor: '#e3e3e3',

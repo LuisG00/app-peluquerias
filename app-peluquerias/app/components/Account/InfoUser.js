@@ -37,11 +37,9 @@ export default function InfoUser(props){
                     visibilityTime: 3000,
                 })
         } else {
-            setIsLoading(true)
             uploadImage(result.uri).then(()=>{
                 console.log('Imagen dentro de firebase')
                 updatePhotoUrl()
-            setIsLoading(false)
             }).catch(()=>{
                 toastRef.current.show({
                     type:'error',
@@ -68,10 +66,12 @@ const uploadImage = async (uri) => {
     const updatePhotoUrl = () =>{
         firebase.storage().ref(`Avatar/${uid}`).getDownloadURL()
         .then(async (response)=>{
+            setIsLoading(true)
             console.log(response)
             const update = { photoURL : response}
             await firebase.auth().currentUser.updateProfile(update)
             console.log('Imagen actualizada')
+            setIsLoading(false)
         })
     }
     return(
