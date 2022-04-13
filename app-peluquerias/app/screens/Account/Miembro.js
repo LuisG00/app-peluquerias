@@ -28,7 +28,6 @@ export default function Miembro(){
             buttonStyle={styles.btnCloseSession}
             titleStyle={styles.btnCloseSessionText}
             onPress={()=>firebase.auth().signOut()}/>
-            
             <Toast ref={toastRef}/>
         </View>
     )
@@ -40,10 +39,14 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         backgroundColor: '#0833A2',
         borderTopColor: '#e3e3e3',
+        alignItems: 'center',
+        justifyContent: 'center',
         borderBottomWidth: 1,
         borderBottomColor: '#e3e3e3',
+        alignSelf: 'center',
         paddingTop: 10,
-        paddingBottom: 10
+        paddingBottom: 10,
+        width: '75%'
     },
     btnCloseSessionText:{
         color: '#fff'

@@ -86,7 +86,7 @@ const uploadImage = async (uri) => {
             photoURL ? {uri:photoURL} : require('../../../assets/img/Avatar.png')
            }
            />
-           <View>
+           <View style={styles.User}>
                 <Text style={styles.displayName}>
                 {displayName ? displayName : 'Invitado'}
                 </Text>
@@ -99,11 +99,11 @@ const uploadImage = async (uri) => {
 }
 const styles = StyleSheet.create({
     viewUserInfo:{
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#f2f2f2',
-        paddingTop: 30,
-        paddingBottom: 30
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "row",
+        backgroundColor: "#f2f2f2",
+        paddingVertical: 30
 
     },
     userInfoAvatar:{
@@ -111,8 +111,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#00a680'
     },
     displayName:{
-        fontWeight: 'bold',
-        paddingBottom: 5,
-        textAlign: 'center'
+        fontWeight: "bold",
+        paddingBottom: 5
+    },
+    User:{
+        marginLeft: 20
     }
 })

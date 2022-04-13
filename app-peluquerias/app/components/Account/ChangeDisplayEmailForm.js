@@ -25,11 +25,11 @@ export default function ChangeDisplayEmailForm(props){
         }else{
         reauthenticate(currentPassword).then(()=>{
             if(!newDisplayEmail){
-                setError('El Email no puede estar vacio.')
+                setError('El e-mail no puede estar vacio.')
             }else if(displayEmail === newDisplayEmail){
-                setError('El email no puede ser igual al actual.')
+                setError('El e-mail no puede ser igual al actual.')
             }else if(!validateEmail(newDisplayEmail)){
-                setError('Email invalido.')
+                setError('E-mail invalido.')
             }    else{
                 setIsLoading(true)
                 const update = newDisplayEmail
@@ -37,13 +37,25 @@ export default function ChangeDisplayEmailForm(props){
                     .auth()
                     .currentUser.updateEmail(update)
                     .then(()=>{      
-                        console.log('Se ha cambiado el email.')
+                        toastRef.current.show({
+                            type: 'info',
+                            position: 'top',
+                            text1: 'Excelente',
+                            text2: 'E-mail cambiado correctamente.',
+                            visibilityTime: 3000,
+                        })
                         setIsLoading(false)
                         setReloadUserInfo(true)
                         setShowModal(false)
                     })
                     .catch(()=>{
-                        console.log('Error al actualizar el email.')   
+                        toastRef.current.show({
+                            type: 'error',
+                            position: 'top',
+                            text1: 'Error',
+                            text2: 'El E-mail se encuentra en uso.',
+                            visibilityTime: 3000,
+                        })  
                         setIsLoading(false)
                     })
             }

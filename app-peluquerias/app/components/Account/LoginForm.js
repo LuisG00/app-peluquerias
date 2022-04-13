@@ -4,10 +4,12 @@ import { Input, Icon, Button } from 'react-native-elements'
 import { useNavigation } from '@react-navigation/native'
 import { validateEmail } from '../../utils/Validation'
 import firebase from 'firebase'
+import Loading from '../Loading'
 
 export default function LoginForm(props) {
     const {toastRef} = props
     const [showPassword, setShowPassword] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
     const [formData, setFormData] = useState(defaultFormValues())
     const navigation = useNavigation()
 
@@ -29,10 +31,12 @@ export default function LoginForm(props) {
               visibilityTime: 3000,
           });
       }else{
+      setIsLoading(true) 
         firebase
             .auth()
             .signInWithEmailAndPassword(formData.email, formData.password)
             .then(()=>{
+      
               navigation.navigate('perfil')
             })
             .catch(()=>{
@@ -43,8 +47,11 @@ export default function LoginForm(props) {
                   text2: 'Correo electrónico o la contraseña que has introducido no son correctas.',
                   visibilityTime: 3000,
               })
+        setIsLoading(false)
           })
+
       }
+   
   }
     const onChange = (e, type) =>{
       setFormData({ ...formData, [type]: e.nativeEvent.text})
@@ -81,6 +88,7 @@ export default function LoginForm(props) {
                 buttonStyle={styles.btnLogin}
                 onPress={onSubmit}
             />
+          <Loading isVisible = {isLoading} text = 'Iniciando Sesión..'/>
     </View>
   )
 }
