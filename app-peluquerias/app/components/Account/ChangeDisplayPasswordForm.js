@@ -39,12 +39,25 @@ const onChangePasswordPress = () =>{
             setIsLoading(true)    
         firebase
         .auth()
-        .currentUser.updatePassword(newDisplayPassword).then(() =>{            
+        .currentUser.updatePassword(newDisplayPassword).then(() =>{
+            toastRef.current.show({
+                type: 'info',
+                position: 'top',
+                text1: 'Excelente',
+                text2: 'Contraseña cambiada correctamente.',
+                visibilityTime: 3000,
+            })           
             setIsLoading(false)
             setShowModal(false)
-            console.log('Se ha cambiado la contraseña')
             
         }).catch((error)=>{
+            toastRef.current.show({
+                type: 'error',
+                position: 'top',
+                text1: 'Error',
+                text2: 'No es posible cambiar la contraseña.',
+                visibilityTime: 3000,
+            })  
             setError(error.message)
             setIsLoading(false)            
         })

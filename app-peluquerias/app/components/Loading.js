@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
         color:'#0833A2',
         textTransform: 'uppercase',
         marginTop: 10,
+        fontFamily: 'monospace',
         textAlign: 'center'
     }
 })

@@ -24,13 +24,25 @@ export default function ChangeDisplayNameForm(props){
                 .auth()
                 .currentUser.updateProfile(update)
                 .then(()=>{
-                    console.log('Excelente desde firebase')
+                    toastRef.current.show({
+                        type: 'info',
+                        position: 'top',
+                        text1: 'Excelente',
+                        text2: 'Cambios realizados correctamente.',
+                        visibilityTime: 3000,
+                    })
                     setIsLoading(false)
                     setReloadUserInfo(true)
                     setShowModal(false)
                 })
                 .catch(()=>{
-                    console.log('Error al actualizar el nombre')
+                    toastRef.current.show({
+                        type: 'error',
+                        position: 'top',
+                        text1: 'Error',
+                        text2: 'Error al actualizar el nombre.',
+                        visibilityTime: 3000,
+                    })
                     setIsLoading(false)
                 })
         }

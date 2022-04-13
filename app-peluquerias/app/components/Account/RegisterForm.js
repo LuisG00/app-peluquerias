@@ -5,6 +5,7 @@ import { validateEmail } from '../../utils/Validation'
 import { validatePhone } from '../../utils/Validation'
 import firebase from 'firebase'
 import { useNavigation} from '@react-navigation/native'
+import Loading from '../Loading'
 
 export default function RegisterForm(props){
     const {toastRef} = props
@@ -12,6 +13,7 @@ export default function RegisterForm(props){
     const [showRepeatPassword, setshowRepeatPassword] = useState(false) 
     const [formData, setFormData] = useState(defaultFormValues())
     const navigation = useNavigation()
+    const [isloading, setIsLoading] = useState(false)
 
     const onSubmit = () =>{
         if(formData.email.length===0||formData.phone.length===0||formData.password.length===0||formData.repeatpassword.length===0){
@@ -55,6 +57,7 @@ export default function RegisterForm(props){
                 visibilityTime: 3000,
             });
         } else{
+            setIsLoading(true)
             firebase
             .auth()
             .createUserWithEmailAndPassword(formData.email, formData.password)
@@ -68,7 +71,8 @@ export default function RegisterForm(props){
                     text1: 'Password',
                     text2: 'Este correo ya ha sido registrado ',
                     visibilityTime: 3000,
-                });
+                })
+            setIsLoading(false)
             })
         }
     }
@@ -131,6 +135,7 @@ export default function RegisterForm(props){
                 buttonStyle={styles.btnRegister}
                 onPress={onSubmit}
             />
+            <Loading isVisible={isloading} text="Creando cuenta..."/>
         </View>
     )
 }
@@ -155,17 +160,18 @@ const styles = StyleSheet.create({
     },
     btnContainerRegister:{
         marginTop: 20,
-        width: '95%'
+        width: '95%',
+        alignSelf: 'center'
     },
     btnRegister:{
         backgroundColor: '#0833A2',
         borderRadius: 10,
-        marginTop: 10
+        marginTop: 5,
+        marginBottom: 20,
         
     },
     iconRight:{
-        color:'#c1c1c1',
-        
+        color:'#c1c1c1'
     }
 
 })
