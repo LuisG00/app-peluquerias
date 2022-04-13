@@ -25,7 +25,7 @@ export default function InfoUser(props){
             const result = await ImagePicker.launchImageLibraryAsync(
                 {
                 allowsEditing:true,
-                aspect:[4,3]
+                aspect:[4,4]
             })
             console.log(result)
             if (result.cancelled){
@@ -107,8 +107,8 @@ const styles = StyleSheet.create({
 
     },
     userInfoAvatar:{
-        marginTop: 20,
-        backgroundColor: '#00a680'
+        marginTop: 10,
+        backgroundColor: '#051C37',
     },
     displayName:{
         fontWeight: "bold",
