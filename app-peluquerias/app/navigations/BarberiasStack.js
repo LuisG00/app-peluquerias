@@ -1,6 +1,6 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
-import Barberias from '../screens/Barberias'
+import Barberias from '../screens/Peluquerias/Barberias'
 
 const Stack = createStackNavigator()
 
