@@ -1,6 +1,6 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
-import Esteticas from '../screens/Esteticas'
+import Esteticas from '../screens/Peluquerias/Esteticas'
 
 const Stack = createStackNavigator()
 
