@@ -6,6 +6,7 @@ import { Input, Button, Icon } from 'react-native-elements'
 export default function AddEsteticaForm({ toastRef , setIsloading, navigation}) {
   const [formData, setFormData] = useState(defaultFormValues())
   const [errorName, setErrorName] = useState(null)
+  const [errorEmail, setErrorEmail] = useState(null)
   const [errorDesc, setErrorDesc] = useState(null)
   const [errorAddress, setErrorAddress] = useState(null)
   
@@ -20,11 +21,18 @@ export default function AddEsteticaForm({ toastRef , setIsloading, navigation}) 
     <View style={styles.viewForm} >
       
       <Input 
-          placeholder='Nombre de la Barbería'
+          placeholder='Nombre de la Estética'
           containerStyle={styles.inputForm}
           defaultValue={formData.name}
           onChange={(e)=> onChange(e,'name')}
           errorMessage={errorName}
+      />
+      <Input
+          placeholder='Email de Contacto'
+          containerStyle={styles.inputForm}
+          defaultValue={formData.email}
+          onChange={(e)=> onChange(e,'email')}
+          errorMessage={errorEmail}
       />
       <Input
           placeholder='Dirección del Local'
@@ -68,7 +76,8 @@ const defaultFormValues = () =>{
   return {
     name:'',
     description:'',
-    address:''
+    address:'',
+    email:''
   }
 }
 
